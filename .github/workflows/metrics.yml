@@ -1,8 +1,8 @@
 # Visit https://github.com/lowlighter/metrics#-documentation for full reference
 name: Metrics
 on:
-  # Schedule updates (every 12 hours)
-  schedule: [{cron: "0 */12 * * *"}]
+  # Schedule updates (every 24 hours)
+  schedule: [{cron: "42 2 * * *"}]
   # Lines below let you run workflow manually and on each commit
   workflow_dispatch:
   push: {branches: ["main"]}
@@ -28,33 +28,38 @@ jobs:
           user: prometheus42
           template: classic
           base: header, activity, community, repositories, metadata
-          repositories_forks: yes
-          base_indepth: yes
-          repositories_affiliations: owner, collaborator, organization_member
           config_timezone: Europe/Berlin
-          plugin_habits: yes
-          plugin_habits_days: 30
-          plugin_habits_facts: yes
-          plugin_habits_from: 1000
-          plugin_habits_languages_limit: 5
-          plugin_habits_languages_threshold: 20%
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: full-year
+          plugin_achievements: yes
+          plugin_achievements_display: detailed
+          plugin_achievements_secrets: yes
+          plugin_achievements_threshold: C
           plugin_activity: yes
+          plugin_activity_days: 14
+          plugin_activity_filter: all
           plugin_activity_limit: 5
-          plugin_activity_days: 0
-          plugin_activity_filter: issue, pr, release, fork, review, ref/create
-          plugin_reactions: yes
-          plugin_reactions_limit: 100
-          plugin_reactions_details: percentage
+          plugin_activity_load: 300
+          plugin_activity_visibility: all
+          plugin_habits: yes
+          plugin_habits_charts_type: classic
+          plugin_habits_days: 14
+          plugin_habits_facts: yes
+          plugin_habits_from: 200
+          plugin_habits_languages_limit: 8
+          plugin_habits_languages_threshold: 0%
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: half-year
           plugin_languages: yes
           plugin_languages_analysis_timeout: 15
           plugin_languages_analysis_timeout_repositories: 7.5
-          plugin_languages_categories: programming
+          plugin_languages_categories: markup, programming
           plugin_languages_colors: github
           plugin_languages_limit: 8
-          plugin_languages_recent_categories: programming
-          plugin_languages_recent_days: 30
+          plugin_languages_recent_categories: markup, programming
+          plugin_languages_recent_days: 14
           plugin_languages_recent_load: 300
           plugin_languages_sections: most-used
           plugin_languages_threshold: 0%
+          plugin_repositories: yes
+          plugin_repositories_order: featured, pinned, starred, random
+          plugin_stars: yes
+          plugin_stars_limit: 4
